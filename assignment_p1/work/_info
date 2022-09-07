@@ -1,0 +1,44 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\A-temsah-Course\HW\assignment_p1
+vclkdiv
+Z1 IeR^h`IW>5dk8aY;UF<Ul03
+Z2 VNL4296=F<MRN6[9M5:I[f2
+Z3 dD:\A-temsah-Course\HW\assignment_p1
+Z4 w1662546947
+Z5 8.\clkdiv.v
+Z6 F.\clkdiv.v
+L0 1
+Z7 OV;L;10.1d;51
+r1
+31
+o-O0
+!i10b 1
+Z8 !s100 Q11GOBgIkA?KR<d8SLWX[2
+!s85 0
+Z9 !s108 1662546948.927000
+Z10 !s107 .\clkdiv.v|
+Z11 !s90 .\clkdiv.v|
+!s101 -O0
+vclkdiv_TB
+!i10b 1
+!s100 mVbIo5^[OE3Iz53jeSHo`2
+I7Bim`cEO[kmk?bm6KWSA:2
+VFA3i9KLo_WLg@d;;d>b=J1
+R3
+w1662563075
+8.\clkdiv_TB.v
+F.\clkdiv_TB.v
+L0 1
+R7
+r1
+!s85 0
+31
+!s108 1662563080.522000
+!s107 .\clkdiv_TB.v|
+!s90 .\clkdiv_TB.v|
+!s101 -O0
+o-O0
+nclkdiv_@t@b

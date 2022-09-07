@@ -1,0 +1,55 @@
+module ALU_16bit #( parameter WIDTH = 16 , parameter WFUN = 4 ,parameter WFLAG =4) 
+(
+input    wire     [WIDTH-1:0]   A,
+input    wire     [WIDTH-1:0]   B,
+input    wire     [WFUN-1:0]    ALU_FUN,
+input    wire                   CLK,
+output   wire                   Arith_Flag,
+output   wire                   Logic_Flag,
+output   wire                   CMP_Flag,
+output   wire                   Shift_Flag,
+output   reg      [WIDTH-1:0]   ALU_OUT,
+output   reg      [WFLAG-1:0]   Flags_out
+);
+
+reg  [WIDTH-1:0] ALU_OUT_w ;
+wire [WFLAG-1:0] Flags_out_w;
+ 
+always @(posedge CLK ) 
+begin
+  ALU_OUT <= ALU_OUT_w;
+  Flags_out<=Flags_out_w 
+end
+
+
+always @(*) 
+begin  
+case (ALU_FUN)
+   4'b0000 : ALU_OUT_w =   A + B;
+   4'b0001 : ALU_OUT_w =   A - B;
+   4'b0010 : ALU_OUT_w =   A * B;
+   4'b0011 : ALU_OUT_w =   A / B;
+   4'b0100 : ALU_OUT_w =   A & B;
+   4'b0101 : ALU_OUT_w =   A | B;
+   4'b0110 : ALU_OUT_w = ~(A & B);
+   4'b0111 : ALU_OUT_w = ~(A | B);
+   4'b1000 : ALU_OUT_w =   A ^ B;
+   4'b1001 : ALU_OUT_w = ~(A ^ B);
+   4'b1010 : ALU_OUT_w =  (A == B);
+   4'b1011 : ALU_OUT_w =  (A > B);
+   4'b1100 : ALU_OUT_w =  (A < B);
+   4'b1101 : ALU_OUT_w =  A >> 1 ;
+   4'b1110 : ALU_OUT_w =  A << 1 ;
+    default: ALU_OUT_w =  16'd0;
+endcase
+end
+
+
+
+
+assign Arith_Flag  = (ALU_FUN[3:2]==00);
+assign Logic_Flag  = (ALU_FUN[3:2]==01)  | (ALU_FUN[3:1]==100);
+assign CMP_Flag    = (ALU_FUN[3:1]==101) | (ALU_FUN[3:0]==1100);
+assign Shift_Flag  = (ALU_FUN[3:0]==1101)| (ALU_FUN[3:0]==1110);
+assign Flags_out_w = {Shift_Flag,CMP_Flag,Logic_Flag,Arith_Flag} ;
+endmodule
